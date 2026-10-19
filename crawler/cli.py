@@ -9,6 +9,7 @@ from pathlib import Path
 from .accounts import load_accounts
 from .bootstrap import build_pool
 from .errors import CrawlerError
+from .env import target_page
 from .exporter import WRITERS
 from .orchestrator import CrawlOptions, Crawler
 from .resolver import resolve_page_id
@@ -42,7 +43,7 @@ def build_parser():
     crawl = commands.add_parser("crawl", help="collect posts and comment trees from a page")
     _add_common(crawl)
     _add_accounts(crawl)
-    crawl.add_argument("--page", required=True, help="page URL or numeric id")
+    crawl.add_argument("--page", help="page URL or numeric id (default: TARGET_PAGE from .env)")
     crawl.add_argument("--limit", type=int, help="max new posts this run")
     crawl.add_argument("--start-date", help="oldest post date, YYYY-MM-DD (UTC, inclusive)")
     crawl.add_argument("--end-date", help="newest post date, YYYY-MM-DD (UTC, inclusive)")
@@ -78,7 +79,7 @@ def _open_storage(args, settings):
 
 def _crawl_options(args, resolve):
     return CrawlOptions(
-        page_id=resolve(args.page),
+        page_id=resolve(target_page(args.page)),
         limit=args.limit,
         start_time=_parse_day(args.start_date, time.min) if args.start_date else None,
         end_time=_parse_day(args.end_date, time.max.replace(microsecond=0)) if args.end_date else None,

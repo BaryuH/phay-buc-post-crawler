@@ -7,3 +7,4 @@ config/accounts.json
 AGENTS.md
 tasks/
 logs/
+.env
