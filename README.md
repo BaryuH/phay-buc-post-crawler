@@ -48,6 +48,10 @@ It can run a complete collection, only pick up new posts since last time, only f
 
 A single dataset in which each post carries its complete comment thread, including replies, the original text, who wrote each comment, and flags for repeated spam. It is meant to be loaded directly into the tools researchers already use.
 
+## Browse the results
+
+A small web app lets you read what was collected without exporting anything. Run `python -m web` and open the address it prints. You can search posts and comments (accent-insensitive, so "toi" finds "tôi"), sort and filter posts, open a post to read its full comment thread, expand or collapse replies, hide flagged repeats, and jump from a comment found by search straight to its place in the post. The app only reads the local database and listens on your own computer.
+
 ## Who it is for
 
 - Students and researchers working on Vietnamese natural language processing.
