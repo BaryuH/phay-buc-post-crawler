@@ -1,0 +1,49 @@
+graphql_url: https://www.facebook.com/api/graphql/
+database_path: data/crawler.db
+log_path: logs/crawler_audit.log
+
+# Facebook rotates doc_ids; update here when requests start returning empty data.
+doc_ids:
+  feed: "28591463417151325"      # ProfileCometTimelineFeedRefetchQuery
+  comments: "27806180149070312"  # CommentsListComponentsPaginationQuery
+  replies: "26570577339199586"   # Depth1CommentsListPaginationQuery
+
+transport:
+  impersonate: chrome
+  timeout_seconds: 30
+  max_attempts: 5
+  retry_backoff_seconds: 2.0
+
+pacing:
+  base_delay_seconds: 6.0          # initial AIMD base delay
+  min_delay_seconds: 4.5           # AIMD floor
+  max_delay_seconds: 30.0          # AIMD ceiling and per-request clamp
+  min_sleep_seconds: 3.5           # per-request clamp
+  jitter_sigma: 0.35
+  additive_decrease_seconds: 0.1
+  throttle_multiplier: 2.0
+  fast_rtt_seconds: 2.0            # RTT below this lowers the delay
+  slow_rtt_seconds: 5.0            # RTT above this raises the delay
+  macro_break_every_min_requests: 35
+  macro_break_every_max_requests: 50
+  macro_break_min_seconds: 45.0
+  macro_break_max_seconds: 90.0
+
+pool:
+  cooldown_seconds: 3600.0         # after a rate-limit warning
+  quota_per_account: 100           # requests per shift before the account rests
+  quota_cooldown_seconds: 1800.0   # rest after a quota shift
+  acquire_timeout_seconds: 7200.0  # how long to wait for any account to wake up before aborting
+
+crawl:
+  consumer_threads: 3
+  feed_page_size: 10
+  request_attempts: 6          # logical retries across sessions per request
+
+dedup:
+  bloom_capacity: 2000000
+  bloom_error_rate: 0.001
+  simhash_max_distance: 3
+  simhash_min_tokens: 8
+  near_duplicate_window: 200000
+  near_duplicate_action: flag   # flag keeps the raw row; drop skips it

@@ -1,0 +1,16 @@
+[
+  {
+    "name": "clone-1",
+    "cookies": "c_user=100000000000001; xs=...; datr=...",
+    "fb_dtsg": "NAcM...",
+    "proxy": "http://user:pass@host:port",
+    "impersonate": "chrome"
+  },
+  {
+    "name": "clone-2",
+    "cookies": "c_user=100000000000002; xs=...; datr=...",
+    "fb_dtsg": "NAcN...",
+    "proxy": null,
+    "impersonate": "chrome"
+  }
+]

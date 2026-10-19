@@ -1,0 +1,4 @@
+curl_cffi>=0.16
+PyYAML>=6.0
+mmh3>=5.0
+pytest>=8.0
