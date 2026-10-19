@@ -52,6 +52,10 @@ A single dataset in which each post carries its complete comment thread, includi
 
 A small web app lets you read what was collected without exporting anything. Run `python -m web` and open the address it prints. You can search posts and comments (accent-insensitive, so "toi" finds "tôi"), sort and filter posts, open a post to read its full comment thread, expand or collapse replies, hide flagged repeats, and jump from a comment found by search straight to its place in the post. The app only reads the local database and listens on your own computer.
 
+## Get started
+
+[`TUTORIAL.md`](TUTORIAL.md) walks through the whole setup: installing, trying a demo with no account, getting your login values, finding a page's ID, running a crawl, and opening the web app.
+
 ## Who it is for
 
 - Students and researchers working on Vietnamese natural language processing.
@@ -67,7 +71,7 @@ A small web app lets you read what was collected without exporting anything. Run
 
 ## Project status
 
-The collection pipeline is complete and has been tested end to end against a simulated version of the platform, including interruptions, rate limiting, and account failures. It has **not yet been run against the live platform**, which needs real accounts and up-to-date query identifiers from the operator.
+The collection pipeline is complete. It has been tested end to end against a simulated version of the platform, including interruptions, rate limiting, and account failures, and it has been run live on a handful of posts from one page, with posts, comments, and replies all collected. Larger live crawls have not been tried yet. It needs real secondary accounts and up-to-date query identifiers from the operator.
 
 ## References
 
