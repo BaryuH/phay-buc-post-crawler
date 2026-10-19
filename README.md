@@ -1,10 +1,10 @@
-# UIT Confessions Crawler
+# Phây-búc crawler
 
-**A resilient data collection tool that turns a Vietnamese community page into a research-ready dataset of posts and their full comment threads.**
+**A resilient data collection tool that turns any public Facebook page into a research-ready dataset of posts and their full comment threads.**
 
 ## Why this project exists
 
-Online communities such as **UIT Confessions** hold a large amount of everyday Vietnamese writing: opinions, emotions, jokes, complaints, and heated debates. That text is valuable for research on sentiment analysis, emotion recognition, hate-speech detection, and topic discovery.
+Online communities on Facebook hold a large amount of everyday writing: opinions, emotions, jokes, complaints, and heated debates. The tool is built for Vietnamese community pages, with **UIT Confessions** as its first case study, and it works on any public page the user points it at. That text is valuable for research on sentiment analysis, emotion recognition, hate-speech detection, and topic discovery.
 
 Collecting it is harder than it looks:
 
@@ -17,7 +17,7 @@ This project is built to remove those obstacles, so a collection run can be left
 
 ## What it does
 
-Point it at a public page and it collects:
+Point it at any public Facebook page, whichever one you choose, and it collects:
 
 - **Every public post**, with its text, date, and reaction and share counts.
 - **The whole comment tree**: every comment and every reply beneath it, with the author and original wording.
@@ -52,7 +52,7 @@ A single dataset in which each post carries its complete comment thread, includi
 
 - Students and researchers working on Vietnamese natural language processing.
 - Teams building datasets for sentiment, emotion, hate-speech, or topic models.
-- Anyone who needs a complete and repeatable archive of a public community page.
+- Anyone who needs a complete and repeatable archive of a public Facebook page.
 
 ## Data policy and responsible use
 
