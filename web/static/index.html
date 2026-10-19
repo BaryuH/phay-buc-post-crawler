@@ -1,0 +1,83 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Phây-búc crawler</title>
+  <link rel="stylesheet" href="/style.css">
+</head>
+<body>
+  <header class="masthead">
+    <div class="masthead-row">
+      <a class="logo" href="#" aria-label="Phây-búc crawler home">
+        <span class="logo-word">Phây-búc!</span><span class="logo-sub">crawler</span>
+      </a>
+      <form class="search" id="search-form" role="search" autocomplete="off">
+        <input type="search" id="search" aria-label="Search">
+        <button class="btn primary" type="submit">Search</button>
+      </form>
+      <p class="masthead-stats" id="stats" aria-label="Totals"></p>
+    </div>
+    <nav class="tabs" role="tablist" aria-label="Browse">
+      <button class="tab" role="tab" id="tab-posts" aria-selected="true" aria-controls="view-posts">Posts</button>
+      <button class="tab" role="tab" id="tab-comments" aria-selected="false" aria-controls="view-comments">Comments</button>
+    </nav>
+  </header>
+
+  <div id="empty-database" class="welcome" hidden></div>
+
+  <main id="view-posts" class="split" role="tabpanel" aria-labelledby="tab-posts">
+    <aside class="module list-module" aria-label="Post list">
+      <div class="module-head">
+        <h2>Posts</h2>
+        <span id="post-count"></span>
+      </div>
+      <form class="filter-bar" id="post-filters" autocomplete="off">
+        <label>Sort
+          <select id="post-sort">
+            <option value="newest">Newest first</option>
+            <option value="oldest">Oldest first</option>
+            <option value="comments">Most comments</option>
+            <option value="reactions">Most reactions</option>
+          </select>
+        </label>
+        <label>Show
+          <select id="post-status">
+            <option value="">All posts</option>
+            <option value="DONE">Finished</option>
+            <option value="PENDING">Waiting</option>
+            <option value="FAILED">Failed</option>
+          </select>
+        </label>
+        <label>At least <input type="number" id="post-min-comments" min="0" value="0"> comments</label>
+      </form>
+      <ol class="post-list" id="post-list"></ol>
+      <p class="tip">Tip: press <kbd>/</kbd> to search, <kbd>j</kbd> and <kbd>k</kbd> to flip between posts.</p>
+    </aside>
+    <section class="detail" id="post-detail" aria-live="polite"></section>
+  </main>
+
+  <main id="view-comments" class="comments-page" role="tabpanel" aria-labelledby="tab-comments" hidden>
+    <div class="module wide-module">
+      <div class="module-head">
+        <h2>Search every comment</h2>
+        <span id="comment-count"></span>
+      </div>
+      <form class="filter-bar" id="comment-filters" autocomplete="off">
+        <label>Written by <input type="search" id="comment-author" placeholder="Name or ID"></label>
+        <label>Show
+          <select id="comment-level">
+            <option value="all">Comments and replies</option>
+            <option value="comments">Top-level comments only</option>
+            <option value="replies">Replies only</option>
+          </select>
+        </label>
+        <label class="check"><input type="checkbox" id="comment-duplicates"> Near-duplicates only</label>
+      </form>
+      <ol class="results" id="comment-results"></ol>
+    </div>
+  </main>
+
+  <script src="/app.js" defer></script>
+</body>
+</html>
