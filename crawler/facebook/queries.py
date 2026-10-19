@@ -6,8 +6,6 @@ from typing import Optional
 FEED_FRIENDLY_NAME = "ProfileCometTimelineFeedRefetchQuery"
 COMMENTS_FRIENDLY_NAME = "CommentsListComponentsPaginationQuery"
 REPLIES_FRIENDLY_NAME = "Depth1CommentsListPaginationQuery"
-# [INFERENCE] Asks for unfiltered ("all comments") ranking; not confirmed against live Facebook.
-COMMENTS_INTENT_TOKEN = "RANKED_UNFILTERED"
 
 _COMMENT_RELAY_PROVIDERS = {
     "__relay_internal__pv__CometUFICommentAutoTranslationTyperelayprovider": "AUTO_TRANSLATE",
@@ -111,7 +109,7 @@ def build_comments_payload(account, doc_id, request):
         "commentsAfterCursor": request.cursor,
         "commentsBeforeCount": None,
         "commentsBeforeCursor": None,
-        "commentsIntentToken": COMMENTS_INTENT_TOKEN,
+        "commentsIntentToken": None,
         "feedLocation": "POST_PERMALINK_DIALOG",
         "focusCommentID": None,
         "scale": 2,

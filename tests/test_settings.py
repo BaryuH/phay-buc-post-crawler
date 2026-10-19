@@ -21,7 +21,6 @@ def test_shipped_settings_load_with_typed_values():
 
     assert settings.pacing.throttle_multiplier == 2.0
     assert settings.dedup.near_duplicate_action == "flag"
-    assert settings.doc_ids.feed == "28591463417151325"
 
 
 def test_missing_key_names_the_section(tmp_path):

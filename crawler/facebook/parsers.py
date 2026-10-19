@@ -182,7 +182,10 @@ def parse_comments_page(response_text, post_id):
     node = dig(document, "data", "node")
     if not isinstance(node, dict):
         raise MalformedResponseError("comments response has no data.node")
-    block = dig(node, "comment_rendering_instance_for_feed_location", "comments") or {}
+    instance = node.get("comment_rendering_instance_for_feed_location")
+    if not isinstance(instance, dict):
+        raise MalformedResponseError("comments missing from response (server-side field error)")
+    block = instance.get("comments") or {}
     comments = [comment for edge in block.get("edges") or []
                 if (comment := _to_comment(edge.get("node") or {}, post_id, None)) is not None]
     return CommentsPage(comments=comments, next_cursor=dig(block, "page_info", "end_cursor"))

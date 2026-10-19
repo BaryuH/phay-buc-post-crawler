@@ -108,3 +108,12 @@ def test_comment_without_id_is_dropped():
 
 def test_feedback_id_matches_reference_encoding():
     assert feedback_id_for_post("123") == "ZmVlZGJhY2s6MTIz"
+
+
+def test_comments_page_with_server_side_field_error_is_not_mistaken_for_an_empty_post():
+    body = ('{"data":{"node":{"__typename":"Feedback","comment_rendering_instance_for_feed_location":null,'
+            '"id":"abc"}},"errors":[{"message":"A server error field_exception occured.",'
+            '"path":["node","comment_rendering_instance_for_feed_location"]}]}')
+
+    with pytest.raises(MalformedResponseError, match="server-side"):
+        parse_comments_page(body, post_id="p1")

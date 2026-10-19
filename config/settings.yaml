@@ -4,7 +4,7 @@ log_path: logs/crawler_audit.log
 
 # Facebook rotates doc_ids; update here when requests start returning empty data.
 doc_ids:
-  feed: "28591463417151325"      # ProfileCometTimelineFeedRefetchQuery
+  feed: "28842066948779041"      # ProfileCometTimelineFeedRefetchQuery (captured from a live request)
   comments: "27806180149070312"  # CommentsListComponentsPaginationQuery
   replies: "26570577339199586"   # Depth1CommentsListPaginationQuery
 
